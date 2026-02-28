@@ -1,4 +1,5 @@
 import { TOKEN_SIGNATURE_ADMIN, TOKEN_SIGNATURE_ADMIN_Refresh, TOKEN_SIGNATURE_USER, TOKEN_SIGNATURE_USER_Refresh } from "../../../config/config.service.js";
+import { tokenType } from "../Enums/token.enums.js";
 import { RoleEnum } from "../Enums/user.enums.js";
 import jwt from 'jsonwebtoken';
 export function getSignature(role = RoleEnum.User) {
@@ -30,4 +31,23 @@ export function verfiyToken({token,signature}){
 }
 export function decodedToken(token){
     return jwt.decode(token)
+}
+
+export function genratesignToken(user){
+     const { accessSignature, refreshSignature } = getSignature(user.role)
+    
+          const acsses_token = generateToken({payload:{ sub:user._id},signature:accessSignature,options:{
+            audience:[user.role,tokenType.access] ,
+            expiresIn:60*15
+          }})
+    
+           const refresh_token =generateToken({payload:{ sub:user._id},signature:refreshSignature,options:{
+            audience:[user.role,tokenType.refresh] ,
+            expiresIn:"1y"
+          }})
+        
+        
+            
+    
+         return  {acsses_token,refresh_token} 
 }

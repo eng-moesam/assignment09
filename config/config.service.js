@@ -17,6 +17,10 @@ export const TOKEN_SIGNATURE_USER= process.env.TOKEN_SIGNATURE_USER||""
 export const TOKEN_SIGNATURE_ADMIN= process.env.TOKEN_SIGNATURE_ADMIN||""
 export const TOKEN_SIGNATURE_USER_Refresh= process.env.TOKEN_SIGNATURE_USER_Refresh||""
 export const TOKEN_SIGNATURE_ADMIN_Refresh= process.env.TOKEN_SIGNATURE_ADMIN_Refresh||""
+
+export const WEB_CLIENT_ID = process.env.WEB_CLIENT_ID||""
+
+
 export const SMTP_HOST = process.env.SMTP_HOST || "smtp.gmail.com"
 export const SMTP_PORT = parseInt(process.env.SMTP_PORT) || 587
 export const SMTP_USER = process.env.SMTP_USER || ""

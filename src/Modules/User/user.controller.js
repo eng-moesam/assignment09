@@ -2,11 +2,12 @@ import express from "express"
 import * as userservice from "./user.service.js"
 import { auth } from "../../Middleware/auth.middleware.js"
 import { tokenType } from "../../Common/Enums/token.enums.js"
+import { authorization } from "../../Middleware/authorization.midlleware.js"
 
 const userRouter = express.Router()
 
 
-userRouter.get("/",auth(), async (req, res, next) => {
+userRouter.get("/",auth(),authorization(), async (req, res, next) => {
     //    console.log();
        
     try {

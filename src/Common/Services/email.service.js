@@ -11,24 +11,19 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-/**
- * Send OTP email to user
- * @param {string} to - recipient email
- * @param {string} otp - 6-digit OTP code
- * @returns {Promise<object>} nodemailer result
- */
+
 export async function sendOtpEmail(to, otp) {
     const mailOptions = {
         from: `"Saraha" <${SMTP_USER}>`,
         to,
-        subject: "كود التحقق - Saraha",
-        text: `كود التحقق الخاص بك: ${otp}\nصالح لمدة 10 دقائق.`,
+        subject: " Saraha",
+        text: `otp ${otp}`,
         html: `
             <div dir="rtl" style="font-family: Arial, sans-serif; max-width: 400px;">
-                <h2>كود التحقق - Saraha</h2>
-                <p>استخدم الكود التالي لإكمال التسجيل:</p>
+                <h2Saraha</h2>
+               
                 <p style="font-size: 24px; font-weight: bold; letter-spacing: 4px;">${otp}</p>
-                <p style="color: #666;">صالح لمدة 10 دقائق.</p>
+                <p style="color: #666;">expired after 10 min</p>
             </div>
         `
     };

@@ -22,6 +22,18 @@ authRouter.post("/signUp", async (req, res, next) => {
         next(error);
     }
 });
+authRouter.post("/signup/gmail", async (req, res, next) => {
+
+    try {
+        const result = await authservice.signupWithGmail(req.body)
+        return res.status(201).json({ mes: "done", result })
+
+    } catch (error) {
+        return res.json(next(error))
+        
+
+    }
+})
 
 
 authRouter.post("/logIn", async (req, res, next) => {
@@ -36,6 +48,7 @@ authRouter.post("/logIn", async (req, res, next) => {
 
     }
 })
+
 
 
 
